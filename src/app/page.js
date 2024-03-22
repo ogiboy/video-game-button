@@ -1,95 +1,37 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
+import { useState } from 'react'
+
+export default function App() {
+  const [gameRunning, setGameRunning] = useState(false)
+
+  /* Challenge
+  
+    Kullanıcının bir video oyununu oynatmasını ve duraklatmasını sağlayacak buton oluşturuyorsunuz. Göreviniz bunu ayarlamak ve aşağıdaki div'e (satır 26) aşağıdaki gibi yerleştirmektir: 
+            
+        1. Buton, "video-game-button" şeklinde bir className almalıdır
+        
+        2. Kullanıcı butona tıkladığında, gameRunning durumunun boolean değeri şu anda olduğu değerin tersine ayarlanmalıdır (true'dan false'a veya tam tersi).
+            
+        3. Eğer gameRunning doğru ise, buton "Pause" kelimesini göstermelidir. Eğer gameRunning değeri false ise, buton "Play" kelimesini göstermelidir. Başka bir deyişle:
+
+          
+             ┌─────────────┐     ------------>     ┌─────────────┐            
+             │     Play    │         click         │    Pause    │
+             └─────────────┘     <------------     └─────────────┘
+           gameRunning = false                    gameRunning = true 
+           (oyun duraklatıldı)                   (oyun oynanıyor)
+             
+        4. Bu görevleri doğru bir şekilde tamamlarsanız, butona tıkladığınızda bazı güzel görsel efektlere sahip olmalı ve çalışmamızın arka planı otomatik olarak açık mavi bir arka planla değiştirilmelidir.
+*/
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    <div>
+      <button
+        className="video-game-button"
+        onClick={() => setGameRunning((p) => !p)}
+      >
+        {gameRunning ? 'Pause' : 'Play'}
+      </button>
+    </div>
+  )
 }
